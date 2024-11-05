@@ -1,0 +1,268 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body,html{
+    
+    width: 100vw;
+    height: 100vh;
+    background-color: hsl(20, 50%, 98%);
+    margin: 1.8vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.the-main{
+    width: 92vw;
+    height: 85vh;
+   
+}
+.the-main .left-container{
+    width: 65%;
+  
+   /* border: 1px solid red; */
+    height: 85vh;
+   float: left;
+  
+ 
+   
+}
+.the-main .right-container{
+    float: right;
+    width: 35%;
+    height: auto;
+   padding: 20px;
+   border-radius: 10px;
+   background-color: white;
+   
+}
+
+.item{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  
+ clear: both;
+    
+}
+.all-item{
+  gap: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.img{
+    position: relative;
+}
+.img .food-photo{
+    width: 200px;
+    border-radius: 10px;
+   
+}
+.add-to-btn{
+    position: absolute;
+    top: 170px;
+    left: 40px;
+    background:hsl(20, 50%, 98%);
+    border: 1px solid hsl(14, 25%, 72%);
+    width:120px;
+    height: 35px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   font-weight: bold;
+   font-size: 12px;
+   gap: 2px;
+
+}
+.item-name{
+    font-size: 13px;
+    color: grey;
+}
+.item-full-name,.nameofitem{
+    font-size: 13px;
+    font-weight: bold;
+}
+.item-price,.dollar{
+    color:  hsl(14, 86%, 42%);
+    font-size: 13px;
+    font-weight:600;
+    display: inline;
+}
+.details-food{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* 
+right */
+h3,.itemcartcount{
+    color: hsl(14, 86%, 42%);
+    font-weight: bold;
+}
+.empty{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    
+}
+.empty img{
+    margin: auto;
+}
+.appear{
+    font-size: 14px;
+    color:hsl(7, 20%, 60%);
+    font-weight: bold;
+}
+.flex{
+    background-color: hsl(14, 86%, 42%);
+    color: white;
+    display: flex;
+    justify-content: space-around;
+}
+.inde{
+    background:hsl(14, 86%, 42%);
+   
+    border: none;
+}
+.cartitem{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.iteemmm{
+    display: flex;
+    flex-direction: column;
+}
+.cartitemdet{
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+.hr{
+    
+    margin-top: 10px;
+    width: 100%;
+    height: 1px;
+    background-color: rgb(236, 222, 222);
+    
+    
+}
+.cut{
+ border: 1px solid hsl(14, 25%, 72%);
+    text-align: center;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+}
+.total{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+
+}
+.head-part{
+    display: flex;
+    justify-content: space-around;
+}
+.head-part button{
+    color: hsl(14, 86%, 42%);
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+}
+.confirm-order{
+margin: 30px;
+}
+.Orderbtn{
+    background-color: hsl(14, 86%, 42%);
+    width: 350px;
+    height:35px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+}
+
+/* confirm box */
+
+.confirmbtn{
+    height: 35px;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    width: 250px;
+    background-color:  hsl(14, 86%, 42%);
+    margin-left: 100px;
+    margin-top: 20px;
+    display: none;
+}
+.add-img{
+    width: 55px;
+    height: 55px;
+}
+.add-to-btn2{
+display: none;
+}
+
+
+.popup {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    max-width: 300px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.startNeworder{
+    height: 35px;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    width: 200px;
+    background-color:  hsl(14, 86%, 42%);
+    margin-top: 10px;
+   
+   
+}
+.order-det{
+    color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 10px;
+}
+.order-det h3{
+    color: black;
+}
+
+.food-border{
+    border: 3px solid hsl(14,86%,42%);
+}
+.inde{
+    color: white;
+}
