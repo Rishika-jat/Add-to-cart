@@ -1,12 +1,8 @@
-//goood
+
 let addBtns = document.querySelectorAll(".add-to-btn");
 let divBtns = document.querySelectorAll(".div-add-btn");
-let NumOfItem = 1;
-let yourCard = 0;
-let TotalOrderPrice = 0;
 let addCountCart = document.querySelector(".add-count");
 let sideShow = document.querySelector(".empty-img");
-let totalBtn = document.querySelector(".totalbtn");
 let AddedItems = document.querySelector(".itemmms");
 let totalAmount = document.querySelector(".totalAmount");
 let confirmbtn = document.querySelector(".confirmbtn");
@@ -18,6 +14,7 @@ let priceItem;
 let photoFood;
 let quantity;
 let photoborder;
+let TotalOrderPrice = 0;
 
 function increFunction(event) {
   let countElement = event.target
@@ -38,28 +35,9 @@ function decreFunction(event) {
   quantity = parseInt(countElement.innerHTML) - 1;
   if (quantity <= 0) {
     quantity = 0;
-
-    forbtn(countElement); //have to solve problem here
+    forbtn(countElement);
     forborder(countElement);
-    let cart = AddedItems.querySelectorAll(".cartitem");
-
-    cart.forEach((carty) => {
-      let class1 = carty.classList[1];
-      let class2 = countElement.classList[1];
-      // console.log(class1, class2);
-
-      if (class1 == class2) {
-        carty.style.display = "none";
-        addCountCart.innerHTML = addCountCart.innerHTML - quantity;
-        TotalOrderPrice = TotalOrderPrice - priceItem * quantity;
-        totalAmount.innerHTML = TotalOrderPrice;
-
-        if (addCountCart.innerHTML == 0) {
-          sideShow.style.display = "flex";
-          confirmbtn.style.display = "none";
-        }
-      }
-    });
+    removeCartItem(countElement);
   } else {
     countElement.innerHTML = quantity;
   }
@@ -67,9 +45,26 @@ function decreFunction(event) {
   updateTask();
 }
 
+function removeCartItem(countElement) {
+  let cart = AddedItems.querySelectorAll(".cartitem");
+  cart.forEach((carty) => {
+    let class1 = carty.classList[1];
+    let class2 = countElement.classList[1];
+    if (class1 == class2) {
+      carty.style.display = "none";
+      addCountCart.innerHTML = addCountCart.innerHTML - quantity;
+      TotalOrderPrice = TotalOrderPrice - priceItem * quantity;
+      totalAmount.innerHTML = TotalOrderPrice;
+      if (addCountCart.innerHTML == 0) {
+        sideShow.style.display = "flex";
+        confirmbtn.style.display = "none";
+      }
+    }
+  });
+}
+
 addBtns.forEach((addBtn, index) => {
   addBtn.addEventListener("click", () => {
-    // sideShow.innerHTML = "";
     sideShow.style.display = "none";
     parentElement = addBtn.closest(".item");
     nameItem = parentElement.querySelector(".item-name").innerHTML;
@@ -87,7 +82,6 @@ addBtns.forEach((addBtn, index) => {
     photoFood.classList.add("food-border");
     photoFood.classList.add(nameItem);
 
-    // photoFood.style.border = "3px solid hsl(14,86%,42%)";
     addBtn.style.display = "none";
     const existingItem = AddedItems.querySelector(`.itemcartcount.${nameItem}`);
     if (existingItem) {
@@ -137,12 +131,8 @@ function addTask() {
       <div class="cut ${nameItem}">
         <img src="./assets/icon-remove-item.svg" alt="">
       </div>
-      
-       <div class="hr"></div>
+      <div class="hr"></div>
     </div>
-   
-
-    
   `;
   let remove = AddedItems.querySelectorAll(".cut");
   let cart = AddedItems.querySelectorAll(".cartitem");
@@ -151,8 +141,6 @@ function addTask() {
       cut.addEventListener("click", () => {
         let class1 = carty.classList[1];
         let class2 = cut.classList[1];
-        console.log(class1, class2);
-
         if (class1 == class2) {
           carty.style.display = "none";
           addCountCart.innerHTML = addCountCart.innerHTML - quantity;
@@ -160,7 +148,6 @@ function addTask() {
           totalAmount.innerHTML = TotalOrderPrice;
           forbtn(carty);
           forborder(carty);
-
           if (addCountCart.innerHTML == 0) {
             sideShow.style.display = "flex";
             confirmbtn.style.display = "none";
@@ -169,7 +156,6 @@ function addTask() {
       });
     });
   });
-
   confirmbtn.style.display = "block";
 }
 
@@ -201,7 +187,6 @@ confirmbtn.addEventListener("click", () => {
                 <div class="order-det">
                 <h3>Your cart:<span class="total-confirm ">${addCountCart.innerHTML}</span></h3>
                 <h3 class="totalbtnconfirm">Total: <span class="totalAmountconfirm">${totalAmount.innerHTML}</span></h3>
-
             </div>
                <button class="startNeworder">Start a new order</button>
         </div>`;
@@ -210,25 +195,9 @@ confirmbtn.addEventListener("click", () => {
   let startNewOrder = popup.querySelector(".startNeworder");
 
   startNewOrder.addEventListener("click", () => {
-    sideShow.style.display = "flex";
-    addCountCart.innerHTML = 0;
-    confirmbtn.style.display = "none";
-    totalAmount.innerHTML = 0;
-    AddedItems.innerHTML = "";
-    popup.style.display = "none";
-    photoborder.forEach((border) => {
-      border.classList.remove("food-border");
-    });
-    quantity = 0;
-
-    divBtns.forEach((btn) => {
-      btn.innerHTML = `
-       <button class="add-to-btn"><img src="./assets/icon-add-to-cart.svg" alt="" class="icon">Add to
-                                cart</button>`;
-    });
+    location.reload();
   });
 });
-
 
 function forbtn(carty) {
   divBtns.forEach((btn) => {
@@ -239,10 +208,10 @@ function forbtn(carty) {
       btn.innerHTML = `
      <button class="add-to-btn"><img src="./assets/icon-add-to-cart.svg" alt="" class="icon">Add to
                               cart</button>`;
-  
     }
   });
 }
+
 function forborder(carty) {
   photoborder.forEach((border) => {
     let class2 = carty.classList[1];
